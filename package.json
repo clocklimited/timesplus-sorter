@@ -1,0 +1,33 @@
+{
+  "author": "Ben Gourley",
+  "name": "timesplus-sorter",
+  "description": "Sorts TimesPlus offers and events by named ordering criteria",
+  "version": "0.0.0",
+  "tags": [],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:clocklimited/timesplus-sorter"
+  },
+  "publishConfig": {
+    "registry": "http://npm.clockte.ch"
+  },
+  "main": "./sorter.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/jshint . --reporter=./node_modules/jshint-full-path/index.js",
+    "pretest": "npm run-script lint",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -R spec",
+    "posttest": "./node_modules/.bin/istanbul check-coverage && rm -rf coverage",
+    "prepublish": "npm test && npm prune"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "istanbul": "0",
+    "jshint": "2",
+    "jshint-full-path": "0",
+    "mocha": "1",
+    "moment": "^2.7.0"
+  }
+}
