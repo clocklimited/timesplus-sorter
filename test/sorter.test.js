@@ -12,6 +12,12 @@ describe('Sorter', function () {
     assert.equal(sorted.length, fixtures.length - 1)
   })
 
+  it('should throw an error if the sort criteria is not supported', function () {
+    assert.throws(function () {
+      sort([], 'Jim')
+    })
+  })
+
   describe('sorting offers', function () {
 
     describe('by criteria: "Newest"', function () {

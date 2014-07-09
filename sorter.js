@@ -59,6 +59,9 @@ function sort(items, criteria) {
       return a.eventDate - b.eventDate
     })
 
+  default:
+    throw new Error('Sort criteria "' + criteria + '" is not supported')
+
   }
 
 }
