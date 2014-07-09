@@ -12,10 +12,12 @@ Sorts TimesPlus offers and events by named ordering criteria
 
 ## sort(items, criteria)
 
-`items` should be an array of TimesPlus offers/events that have a `liveData` and
+`items` should be an array of TimesPlus offers/events that have a `liveDate` and
 either an `eventDate` or an `expiryDate`.
 
 `criteria` can be one of `'Newest'`, `'Ending Soon'`, `'Event Date'`.
+
+Returns a new array.
 
 #### 'Newest'
 
