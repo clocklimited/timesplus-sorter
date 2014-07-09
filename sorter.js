@@ -24,8 +24,8 @@ function sort(items, criteria) {
 
       // If A is in the past…
       if (aDate < now) {
-        // … and B is undefined, B comes first
-        if (typeof bDate === 'undefined') return 1
+        // … and B is null, B comes first
+        if (bDate === null) return 1
         // … and B is in the future, B comes first
         if (bDate > now) return 1
         // … otherwise both are in the past, so most recent comes first
@@ -35,14 +35,14 @@ function sort(items, criteria) {
       // If B is in the past, A must come first, because:
       //   1. If A was in the past, this function would have already returned
       //      from the if block above
-      //   2. Wether A is undefined OR in the future, it should come first,
+      //   2. Whether A is null OR in the future, it should come first,
       //      and these are the only 2 possibilities
       if (bDate < now) return -1
 
       // If either date does not exist, the other one must come first because
       // the function only has future (or non-existent) dates at this point
-      if (typeof aDate === 'undefined') return 1
-      if (typeof bDate === 'undefined') return -1
+      if (aDate === null) return 1
+      if (bDate === null) return -1
 
       // Both dates are in the future, so soonest comes first
       return aDate - bDate
@@ -68,8 +68,10 @@ function sort(items, criteria) {
 
 /*
  * Returns either the item's expiryDate or eventDate,
- * or undefined if neither exist.
+ * or null if neither exist.
  */
 function getItemDate(item) {
-  return item.expiryDate || item.eventDate
+  if (item.eventDate) return item.eventDate
+  if (item.expiryDate) return item.expiryDate
+  return null
 }
