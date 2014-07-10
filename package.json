@@ -2,7 +2,7 @@
   "author": "Ben Gourley",
   "name": "timesplus-sorter",
   "description": "Sorts TimesPlus offers and events by named ordering criteria",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "tags": [],
   "repository": {
     "type": "git",
