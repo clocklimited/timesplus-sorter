@@ -31,6 +31,8 @@ describe('Sorter', function () {
           assert.equal(item._id, expectedOrder[i], 'offer ' + item._id + ' is not expected at index ' + i)
         })
 
+        assert.equal(ordered.length, expectedOrder.length)
+
       })
 
     })
@@ -45,6 +47,8 @@ describe('Sorter', function () {
         ordered.forEach(function (item, i) {
           assert.equal(item._id, expectedOrder[i], 'offer ' + item._id + ' is not expected at index ' + i)
         })
+
+        assert.equal(ordered.length, expectedOrder.length)
 
       })
 
@@ -65,6 +69,8 @@ describe('Sorter', function () {
           assert.equal(item._id, expectedOrder[i], 'event ' + item._id + ' is not expected at index ' + i)
         })
 
+        assert.equal(ordered.length, expectedOrder.length)
+
       })
 
     })
@@ -79,6 +85,8 @@ describe('Sorter', function () {
         ordered.forEach(function (item, i) {
           assert.equal(item._id, expectedOrder[i], 'event ' + item._id + ' is not expected at index ' + i)
         })
+
+        assert.equal(ordered.length, expectedOrder.length)
 
       })
 
@@ -100,6 +108,8 @@ describe('Sorter', function () {
           assert.equal(item._id, expectedOrder[i], 'item ' + item._id + ' is not expected at index ' + i)
         })
 
+        assert.equal(ordered.length, expectedOrder.length)
+
       })
 
     })
@@ -115,6 +125,21 @@ describe('Sorter', function () {
         ordered.forEach(function (item, i) {
           assert.equal(item._id, expectedOrder[i], 'item ' + item._id + ' is not expected at index ' + i)
         })
+
+        assert.equal(ordered.length, expectedOrder.length)
+
+      })
+
+      it('should sort non-expiring offer before a past event', function () {
+
+        var ordered = sort([ offerFixtures[2], eventFixtures[2], offerFixtures[2]  ], 'Ending Soon')
+          , expectedOrder = [ 'o3', 'o3', 'e3' ]
+
+        ordered.forEach(function (item, i) {
+          assert.equal(item._id, expectedOrder[i], 'item ' + item._id + ' is not expected at index ' + i)
+        })
+
+        assert.equal(ordered.length, expectedOrder.length)
 
       })
 

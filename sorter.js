@@ -23,7 +23,7 @@ function sort(items, criteria) {
         , now = new Date()
 
       // If A is in the past…
-      if (aDate < now) {
+      if (aDate !== null && aDate < now) {
         // … and B is null, B comes first
         if (bDate === null) return 1
         // … and B is in the future, B comes first
@@ -37,7 +37,7 @@ function sort(items, criteria) {
       //      from the if block above
       //   2. Whether A is null OR in the future, it should come first,
       //      and these are the only 2 possibilities
-      if (bDate < now) return -1
+      if (bDate !== null && bDate < now) return -1
 
       // If either date does not exist, the other one must come first because
       // the function only has future (or non-existent) dates at this point
