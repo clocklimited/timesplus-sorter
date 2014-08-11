@@ -7,6 +7,7 @@ module.exports.push(
   , title: 'Hypnotist eBook'
   , liveDate: moment().subtract('weeks', 1).add('minutes', 1).toDate()
   , expiryDate: moment().add('days', 1).toDate()
+  , score: '0.1'
   })
 
 module.exports.push(
@@ -14,6 +15,7 @@ module.exports.push(
   , title: 'Win £1,000'
   , liveDate: moment().subtract('days', 1).toDate()
   , expiryDate: moment().add('weeks', 1).toDate()
+  , score: '0.8'
   })
 
 module.exports.push(
@@ -21,6 +23,7 @@ module.exports.push(
   , title: 'Eat Out'
   , liveDate: moment().subtract('weeks', 2).toDate()
   , expiryDate: null
+  , score: '1.1'
   })
 
 module.exports.push(
@@ -28,6 +31,7 @@ module.exports.push(
   , title: 'Win an iPad'
   , liveDate: moment().subtract('months', 1).toDate()
   , expiryDate: moment().add('weeks', 2).toDate()
+  , score: '1.6'
   })
 
 module.exports.push(
@@ -35,4 +39,5 @@ module.exports.push(
   , title: 'Book for £2.99'
   , liveDate: moment().subtract('hours', 1).add('minutes', 1).toDate()
   , expiryDate: moment().add('days', 4).toDate()
+  , score: '0.8'
   })

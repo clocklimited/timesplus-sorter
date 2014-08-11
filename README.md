@@ -15,7 +15,7 @@ Sorts TimesPlus offers and events by named ordering criteria
 `items` should be an array of TimesPlus offers/events that have a `liveDate` and
 either an `eventDate` or an `expiryDate`.
 
-`criteria` can be one of `'Newest'`, `'Ending Soon'`, `'Event Date'`.
+`criteria` can be one of `'Newest'`, `'Ending Soon'`, `'Event Date'`, `'Most Relevant'`.
 
 Returns a new array.
 
@@ -30,6 +30,13 @@ Orders items by the nearest future `expiryDate` or `eventDate`, then items with 
 #### 'Event Date'
 
 Orders items by the nearest future `eventDate`.
+
+#### 'Most Relevant'
+
+Orders items according to their `score` value, as returned by mongo's full text search engine.
+
+Prioritises currently live offers/events and sorts them by score.
+Shifts past offers/events to the bottom of the list and sorts them.
 
 ## Credits
 Built by developers at [Clock](http://clock.co.uk).
