@@ -1,5 +1,6 @@
 var assert = require('assert')
   , offerFixtures = require('./fixtures/offers')
+  , pastOffers = require('./fixtures/past-offers')
   , eventFixtures = require('./fixtures/events')
   , sort = require('../')
 
@@ -54,6 +55,23 @@ describe('Sorter', function () {
 
     })
 
+    describe('by criteria: "Most Relevant"', function () {
+
+      it('should order by relevancy score and move past offers to the end', function () {
+
+        var ordered = sort(offerFixtures.concat(pastOffers), 'Most Relevant')
+          , expectedOrder = [ 'o4', 'o3', 'o2', 'o5', 'o1', 'o6', 'o7' ]
+
+        ordered.forEach(function (item, i) {
+          assert.equal(item._id, expectedOrder[i], 'offer ' + item._id + ' is not expected at index ' + i)
+        })
+
+        assert.equal(ordered.length, expectedOrder.length)
+
+      })
+
+    })
+
   })
 
   describe('sorting events', function () {
@@ -80,6 +98,23 @@ describe('Sorter', function () {
       it('should order by most recent liveDate', function () {
 
         var ordered = sort(eventFixtures, 'Newest')
+          , expectedOrder = [ 'e5', 'e2', 'e1', 'e4', 'e3' ]
+
+        ordered.forEach(function (item, i) {
+          assert.equal(item._id, expectedOrder[i], 'event ' + item._id + ' is not expected at index ' + i)
+        })
+
+        assert.equal(ordered.length, expectedOrder.length)
+
+      })
+
+    })
+
+    describe('by criteria: "Most Relevant"', function () {
+
+      it('should order by relevancy score and move past events to the end', function () {
+
+        var ordered = sort(eventFixtures, 'Most Relevant')
           , expectedOrder = [ 'e5', 'e2', 'e1', 'e4', 'e3' ]
 
         ordered.forEach(function (item, i) {
@@ -134,6 +169,24 @@ describe('Sorter', function () {
 
         var ordered = sort([ offerFixtures[2], eventFixtures[2], offerFixtures[2]  ], 'Ending Soon')
           , expectedOrder = [ 'o3', 'o3', 'e3' ]
+
+        ordered.forEach(function (item, i) {
+          assert.equal(item._id, expectedOrder[i], 'item ' + item._id + ' is not expected at index ' + i)
+        })
+
+        assert.equal(ordered.length, expectedOrder.length)
+
+      })
+
+    })
+
+    describe('by criteria: "Most Relevant"', function () {
+
+      it('should order by relevancy score', function () {
+
+        var fixtures = eventFixtures.concat(offerFixtures.concat(pastOffers))
+          , ordered = sort(fixtures, 'Most Relevant')
+          , expectedOrder = [ 'o4', 'o3', 'e5', 'e2', 'o2', 'o5', 'e1', 'o1', 'o6', 'o7', 'e4', 'e3' ]
 
         ordered.forEach(function (item, i) {
           assert.equal(item._id, expectedOrder[i], 'item ' + item._id + ' is not expected at index ' + i)

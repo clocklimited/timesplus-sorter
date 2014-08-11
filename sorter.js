@@ -59,6 +59,29 @@ function sort(items, criteria) {
       return a.eventDate - b.eventDate
     })
 
+  case 'Most Relevant':
+
+    function sortScore(a, b) {
+      if (a.score < b.score) return 1
+      if (a.score > b.score) return -1
+
+      // The score must be equal
+      return 0
+    }
+
+    var now = new Date()
+      , pastItems = []
+      , liveItems = []
+
+    items.forEach(function (item) {
+      if (item.expiryDate && item.expiryDate < now) return pastItems.push(item)
+      if (item.eventDate && item.eventDate < now) return pastItems.push(item)
+
+      liveItems.push(item)
+    })
+
+    return liveItems.sort(sortScore).concat(pastItems.sort(sortScore))
+
   default:
     throw new Error('Sort criteria "' + criteria + '" is not supported')
 
