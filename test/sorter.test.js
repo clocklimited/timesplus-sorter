@@ -1,6 +1,5 @@
 var assert = require('assert')
   , offerFixtures = require('./fixtures/offers')
-  , pastOffers = require('./fixtures/past-offers')
   , eventFixtures = require('./fixtures/events')
   , sort = require('../')
 
@@ -57,10 +56,10 @@ describe('Sorter', function () {
 
     describe('by criteria: "Most Relevant"', function () {
 
-      it('should order by relevancy score and move past offers to the end', function () {
+      it('should order by relevancy score', function () {
 
-        var ordered = sort(offerFixtures.concat(pastOffers), 'Most Relevant')
-          , expectedOrder = [ 'o4', 'o3', 'o2', 'o5', 'o1', 'o6', 'o7' ]
+        var ordered = sort(offerFixtures, 'Most Relevant')
+          , expectedOrder = [ 'o4', 'o3', 'o2', 'o5', 'o1' ]
 
         ordered.forEach(function (item, i) {
           assert.equal(item._id, expectedOrder[i], 'offer ' + item._id + ' is not expected at index ' + i)
@@ -184,9 +183,9 @@ describe('Sorter', function () {
 
       it('should order by relevancy score', function () {
 
-        var fixtures = eventFixtures.concat(offerFixtures.concat(pastOffers))
+        var fixtures = eventFixtures.concat(offerFixtures)
           , ordered = sort(fixtures, 'Most Relevant')
-          , expectedOrder = [ 'o4', 'o3', 'e5', 'e2', 'o2', 'o5', 'e1', 'o1', 'o6', 'o7', 'e4', 'e3' ]
+          , expectedOrder = [ 'o4', 'o3', 'e5', 'e2', 'o2', 'o5', 'e1', 'o1', 'e4', 'e3' ]
 
         ordered.forEach(function (item, i) {
           assert.equal(item._id, expectedOrder[i], 'item ' + item._id + ' is not expected at index ' + i)

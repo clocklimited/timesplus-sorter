@@ -74,7 +74,6 @@ function sort(items, criteria) {
       , liveItems = []
 
     items.forEach(function (item) {
-      if (item.expiryDate && item.expiryDate < now) return pastItems.push(item)
       if (item.eventDate && item.eventDate < now) return pastItems.push(item)
 
       liveItems.push(item)
