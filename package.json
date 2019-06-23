@@ -26,8 +26,8 @@
   "devDependencies": {
     "istanbul": "0",
     "jshint": "2",
-    "jshint-full-path": "0",
-    "mocha": "1",
+    "jshint-full-path": "^1.1.1",
+    "mocha": "^6.1.4",
     "moment": "^2.7.0"
   }
 }
