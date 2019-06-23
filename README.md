@@ -1,5 +1,7 @@
 # timesplus-sorter
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/clocklimited/timesplus-sorter.svg)](https://greenkeeper.io/)
+
 Sorts TimesPlus offers and events by named ordering criteria
 
 ## Installation
